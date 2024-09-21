@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  dockerdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server
+    ports:
+     - 8002:1433 
+    environment:
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=Passdb@123456
+  dockercomposesample:
+    container_name: docker-compose-sample
+    image: ${DOCKER_REGISTRY-}dockercomposesample
+    build:
+      context: .
+      dockerfile: DockerComposeSample/Dockerfile
+    ports:
+     - 8001:80
+    depends_on:
+     - dockerdb
+    environment:
+     - DB_HOST=dockerdb
+     - DB_NAME=DockerSample
+     - DB_SA_PASSWORD=Passdb@123456
