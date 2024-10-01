@@ -3,12 +3,15 @@ version: '3.4'
 services:
   dockerdb:
     container_name: app-db
-    image: mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
      - 8002:1433 
     environment:
      - ACCEPT_EULA=Y
      - SA_PASSWORD=Passdb@123456
+     - MSSQL_PID=Evaluation
+    # volumes:
+    #   - E:/SampleCode/database:/var/opt/mssql
   dockercomposesample:
     container_name: docker-compose-sample
     image: ${DOCKER_REGISTRY-}dockercomposesample
