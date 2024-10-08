@@ -1,5 +1,8 @@
 version: '3.4'
 
+networks:
+  backend:
+
 services:
   dockerdb:
     container_name: app-db
@@ -12,6 +15,8 @@ services:
      - MSSQL_PID=Evaluation
     # volumes:
     #   - E:/SampleCode/database:/var/opt/mssql
+    networks:
+     - backend
 
   dockercomposesample:
     container_name: docker-compose-sample
@@ -19,22 +24,25 @@ services:
     build:
       context: .
       dockerfile: DockerComposeSample/Dockerfile
-    ports:
-     - 8001:80
+    # ports:
+    #  - 8001:80
     depends_on:
      - dockerdb
-     - docker_redis 
     environment:
      - DB_HOST=dockerdb
      - DB_NAME=DockerSample
      - DB_SA_PASSWORD=Passdb@123456
      - DB_REDIS_HOST=docker_redis
+    networks:
+     - backend
 
   docker_redis:
     container_name: redis-db
     image: redis:latest
     ports:
      - 8004:6379
+    networks:
+     - backend
 
   dockercomposesampleredis:
     container_name: docker-compose-sample-redis
@@ -42,9 +50,22 @@ services:
     build:
       context: ../DockerComposeSampleRedis
       dockerfile: Dockerfile
-    ports:
-     - 8003:80
+    # ports:
+    #  - 8003:80
     depends_on:
      - docker_redis 
     environment:
      - DB_REDIS_HOST=docker_redis
+    networks:
+     - backend
+
+  gateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: Gateway
+      dockerfile: Dockerfile
+    ports:
+     - 8888:80 
+    networks:
+     - backend

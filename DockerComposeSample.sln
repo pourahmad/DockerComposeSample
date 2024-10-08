@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerComposeSample", "Dock
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F9A780AB-998A-4694-91D9-D77925FBC3A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerComposeSampleRedis", "..\DockerComposeSampleRedis\DockerComposeSampleRedis.csproj", "{B83024AE-0C0C-4938-8CB9-BCF35E185F6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerComposeSampleRedis", "..\DockerComposeSampleRedis\DockerComposeSampleRedis.csproj", "{B83024AE-0C0C-4938-8CB9-BCF35E185F6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{8740CF17-5D6F-4940-8DD4-E9B57563198B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.csproj", "{FB5A4790-ED55-4A76-A278-E03EFDA25808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{B83024AE-0C0C-4938-8CB9-BCF35E185F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B83024AE-0C0C-4938-8CB9-BCF35E185F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B83024AE-0C0C-4938-8CB9-BCF35E185F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB5A4790-ED55-4A76-A278-E03EFDA25808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB5A4790-ED55-4A76-A278-E03EFDA25808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB5A4790-ED55-4A76-A278-E03EFDA25808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB5A4790-ED55-4A76-A278-E03EFDA25808}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB5A4790-ED55-4A76-A278-E03EFDA25808} = {8740CF17-5D6F-4940-8DD4-E9B57563198B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F66A40EE-7023-44FE-8CD9-094A98CD5B5A}

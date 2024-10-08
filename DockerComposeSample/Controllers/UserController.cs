@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DockerComposeSample.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class UserController(IUserService userService) : ControllerBase
 {

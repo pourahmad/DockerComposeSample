@@ -1,0 +1,46 @@
+{
+  "Routes": [
+    //user api
+    {
+      "UpstreamPathTemplate": "/api/User",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesample",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User"
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesample",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/id"
+    },
+
+    //redis api
+    {
+      "UpstreamPathTemplate": "/api/Redis",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesampleredis",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Redis"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8888"
+  }
+}
