@@ -22,8 +22,8 @@ services:
     container_name: docker-compose-sample
     image: ${DOCKER_REGISTRY-}dockercomposesample
     build:
-      context: .
-      dockerfile: DockerComposeSample/Dockerfile
+      context: DockerComposeSample
+      dockerfile: Dockerfile
     # ports:
     #  - 8001:80
     depends_on:
@@ -48,7 +48,7 @@ services:
     container_name: docker-compose-sample-redis
     image: ${DOCKER_REGISTRY-}dockercomposesampleredis
     build:
-      context: ../DockerComposeSampleRedis
+      context: DockerComposeSampleRedis
       dockerfile: Dockerfile
     # ports:
     #  - 8003:80
