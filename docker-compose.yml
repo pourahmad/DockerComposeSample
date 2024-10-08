@@ -12,11 +12,7 @@ services:
      - MSSQL_PID=Evaluation
     # volumes:
     #   - E:/SampleCode/database:/var/opt/mssql
-  docker_redis:
-    container_name: redis-db
-    image: redis:latest
-    ports:
-     - 8001:6379
+
   dockercomposesample:
     container_name: docker-compose-sample
     image: ${DOCKER_REGISTRY-}dockercomposesample
@@ -24,7 +20,7 @@ services:
       context: .
       dockerfile: DockerComposeSample/Dockerfile
     ports:
-     - 8003:80
+     - 8001:80
     depends_on:
      - dockerdb
      - docker_redis 
@@ -32,4 +28,23 @@ services:
      - DB_HOST=dockerdb
      - DB_NAME=DockerSample
      - DB_SA_PASSWORD=Passdb@123456
+     - DB_REDIS_HOST=docker_redis
+
+  docker_redis:
+    container_name: redis-db
+    image: redis:latest
+    ports:
+     - 8004:6379
+
+  dockercomposesampleredis:
+    container_name: docker-compose-sample-redis
+    image: ${DOCKER_REGISTRY-}dockercomposesampleredis
+    build:
+      context: ../DockerComposeSampleRedis
+      dockerfile: Dockerfile
+    ports:
+     - 8003:80
+    depends_on:
+     - docker_redis 
+    environment:
      - DB_REDIS_HOST=docker_redis
