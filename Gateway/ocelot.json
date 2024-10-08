@@ -23,13 +23,25 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/User/id"
+      "DownstreamPathTemplate": "/api/User/{id}"
     },
 
     //redis api
     {
+      "UpstreamPathTemplate": "/api/Redis/{key}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesampleredis",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Redis/{key}"
+    },
+    {
       "UpstreamPathTemplate": "/api/Redis",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamHttpMethod": [ "Post", "Put" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
