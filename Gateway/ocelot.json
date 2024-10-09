@@ -2,7 +2,7 @@
   "Routes": [
     //user api
     {
-      "UpstreamPathTemplate": "/api/User",
+      "UpstreamPathTemplate": "/User",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -14,7 +14,7 @@
       "DownstreamPathTemplate": "/api/User"
     },
     {
-      "UpstreamPathTemplate": "/api/User/{id}",
+      "UpstreamPathTemplate": "/User/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -28,7 +28,7 @@
 
     //redis api
     {
-      "UpstreamPathTemplate": "/api/Redis/{key}",
+      "UpstreamPathTemplate": "/Redis/{key}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -40,7 +40,7 @@
       "DownstreamPathTemplate": "/api/Redis/{key}"
     },
     {
-      "UpstreamPathTemplate": "/api/Redis",
+      "UpstreamPathTemplate": "/Redis",
       "UpstreamHttpMethod": [ "Post", "Put" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -50,6 +50,31 @@
         }
       ],
       "DownstreamPathTemplate": "/api/Redis"
+    },
+    // mongo api
+    {
+      "UpstreamPathTemplate": "/Category",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesamplemongodb",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Category"
+    },
+    {
+      "UpstreamPathTemplate": "/Category/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete"],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dockercomposesamplemongodb",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Category/{id}"
     }
   ],
   "GlobalConfiguration": {

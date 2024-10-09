@@ -4,6 +4,17 @@ networks:
   backend:
 
 services:
+  gateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: Gateway
+      dockerfile: Dockerfile
+    ports:
+     - 8888:80 
+    networks:
+     - backend
+
   dockerdb:
     container_name: app-db
     image: mcr.microsoft.com/mssql/server:2019-latest
@@ -13,8 +24,6 @@ services:
      - ACCEPT_EULA=Y
      - SA_PASSWORD=Passdb@123456
      - MSSQL_PID=Evaluation
-    # volumes:
-    #   - E:/SampleCode/database:/var/opt/mssql
     networks:
      - backend
 
@@ -24,8 +33,6 @@ services:
     build:
       context: DockerComposeSample
       dockerfile: Dockerfile
-    # ports:
-    #  - 8001:80
     depends_on:
      - dockerdb
     environment:
@@ -50,8 +57,6 @@ services:
     build:
       context: DockerComposeSampleRedis
       dockerfile: Dockerfile
-    # ports:
-    #  - 8003:80
     depends_on:
      - docker_redis 
     environment:
@@ -59,13 +64,24 @@ services:
     networks:
      - backend
 
-  gateway:
-    container_name: api-gateway
-    image: ${DOCKER_REGISTRY-}gateway
-    build:
-      context: Gateway
-      dockerfile: Dockerfile
+  mongo_db: 
+    container_name: mongo-db
+    image: mongo
     ports:
-     - 8888:80 
+     - 8005:27017 
     networks:
      - backend
+
+  dockercomposesamplemongodb:
+    container_name: docker-compose-sample-mongodb 
+    image: ${DOCKER_REGISTRY-}dockercomposesamplemongodb
+    build:
+      context: DockerComposeSampleMongoDb
+      dockerfile: Dockerfile
+    environment:
+     - MongoDbConnectionString=mongodb://mongo_db
+     - MongoDbName=Sales
+    networks:
+     - backend
+    depends_on:
+     - mongo_db

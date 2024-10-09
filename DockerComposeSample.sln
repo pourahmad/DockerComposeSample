@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerComposeSampleRedis", "DockerComposeSampleRedis\DockerComposeSampleRedis.csproj", "{B4C57984-57ED-4A67-9068-44EE7B131656}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerComposeSampleMongoDb", "DockerComposeSampleMongoDb\DockerComposeSampleMongoDb.csproj", "{AFE5D3D0-CA56-4006-8C3E-5D57B80CAF52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{B4C57984-57ED-4A67-9068-44EE7B131656}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4C57984-57ED-4A67-9068-44EE7B131656}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4C57984-57ED-4A67-9068-44EE7B131656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE5D3D0-CA56-4006-8C3E-5D57B80CAF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE5D3D0-CA56-4006-8C3E-5D57B80CAF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE5D3D0-CA56-4006-8C3E-5D57B80CAF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE5D3D0-CA56-4006-8C3E-5D57B80CAF52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

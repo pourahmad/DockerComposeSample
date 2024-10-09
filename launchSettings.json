@@ -6,7 +6,8 @@
       "serviceActions": {
         "dockercomposesample": "StartDebugging",
         "dockercomposesampleredis": "StartDebugging",
-        "gateway": "StartDebugging"
+        "gateway": "StartDebugging",
+        "dockercomposesamplemongodb": "StartDebugging"
       }
     }
   }

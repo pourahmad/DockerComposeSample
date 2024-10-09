@@ -24,3 +24,11 @@ services:
     ports:
       - "80"
 
+
+  dockercomposesamplemongodb:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=80
+    ports:
+      - "80"
+
